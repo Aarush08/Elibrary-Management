@@ -1,0 +1,141 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterMain.master.cs" Inherits="ElibraryManagement.MasterMain" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+
+    <%--bootstrap css--%>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <%--datatables css--%>
+    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
+    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+    <%--fontawesome css--%>    
+    <link href="lib/font-awesome/css/all.css" rel="stylesheet" />
+    <%--jquery, bootstrap and popper js files--%>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <%--Our Custom stylesheet--%>
+    <link href="CSS1/customstylesheet.css" rel="stylesheet" />
+    <style>
+        #btn_user1:hover{
+            color:white;
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>    
+</head>
+<body>
+    <form id="form1" runat="server">
+
+             <%--------------------------------------------Header Content----------------------------------------------%>   
+
+        <div class="container-fluid bg-light">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <navbar class="navbar navbar-expand-lg navbar-light <%--fixed-top bg-light--%>">
+                <a class="navbar-brand" href="#">
+                    <img src="images/imgs/books.png" style="width:30px;height:30px;"/>
+                    E Library                    
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <%-------------------------- Static webpages -------------------------------%>
+
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="Home.aspx">Home</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="">About</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="">Terms and Conditions</a>
+                        </li>                        
+                    </ul>
+
+                    <%-------------------------- Dynamic webpages -------------------------------%>
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <asp:LinkButton class="nav-link" id="LinkButton1" runat="server">View Books</asp:LinkButton>
+                        </li>
+                        <li class="nav-item active">
+                            <asp:LinkButton class="nav-link" id="LinkButton2" PostBackUrl="~/login.aspx" runat="server" >User Login</asp:LinkButton>
+                        </li>
+                        <li class="nav-item active">
+                            <asp:LinkButton class="nav-link" id="LinkButton3" PostBackUrl="~/Signup.aspx" runat="server">Sign Up</asp:LinkButton>
+                        </li>
+                        <li class="nav-item active">
+                            <asp:LinkButton class="nav-link" id="LinkButton4" visible="false" runat="server" OnClick="LinkButton4_Click">Logout</asp:LinkButton>
+                        </li>
+                        <li class="nav-item active">
+                            <%--<a href="Userprofile.aspx" class="text-decoration-none"><input type="button" visible="false" class="nav-link btn btn-outline-primary" id="btn_user" value="Hello User" runat="server" /></a>--%>
+                            <asp:Button class="nav-link btn btn-outline-primary" ID="btn_user1" runat="server" OnClick="btn_user1_Click"/>  
+                        </li>
+                    </ul>
+                </div>
+            </navbar>
+                </div>
+            </div>
+            
+            </div>
+        
+          
+                    <%--------------------------------------------Header Content----------------------------------------------%> 
+
+                    <%--------------------------------------------Main Content----------------------------------------------%> 
+
+        <div>
+            <Asp:ContentPlaceHolder Id="ContentPlaceHolder1" runat="server"></Asp:ContentPlaceHolder>
+        </div>
+
+                    <%--------------------------------------------Main Content----------------------------------------------%> 
+
+
+                    <%--------------------------------------------Footer Content----------------------------------------------%>
+
+        <footer>
+            <div id="footer" class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12" id="links">
+                        <p align="center">
+                            <asp:LinkButton Id="adminlogin" class="footerlinks" PostBackUrl="~/Adminlogin.aspx" runat="server">Admin Login</asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:LinkButton Id="author" class="footerlinks" PostBackUrl="~/Adminauthormanagement.aspx" runat="server">Author Management</asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:LinkButton Id="publisher" class="footerlinks" PostBackUrl="~/Adminpublishermanagement.aspx" runat="server">Publisher Management</asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:LinkButton Id="bookinv" class="footerlinks" PostBackUrl="~/Adminbookinventory.aspx" runat="server">Book Inventory</asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:LinkButton Id="bookiss" class="footerlinks" PostBackUrl="~/Adminbookissuing.aspx" runat="server">Book Issuing</asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:LinkButton Id="membermng" class="footerlinks" PostBackUrl="~/Adminusermanagement.aspx" runat="server">Member Management</asp:LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;
+                           
+                        </p>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12" id="trademarks">
+                        <p align="center">
+                         &copy All Right Reserved |  <a href="#" style="text-decoration:none">Help Center </a> | <a href="#" style="text-decoration:none">Report</a>
+                            </p>
+                    </div>
+                </div>
+                
+            </div>
+            
+            
+        </footer>
+        
+                    <%--------------------------------------------Footer Content----------------------------------------------%>
+
+    </form>
+</body>
+</html>
