@@ -1,0 +1,13 @@
+﻿.footerlinks {
+    text-decoration: none !important;
+    color:darkblue;
+}
+    .footerlinks:hover {
+        color: black;
+    }
+#links {
+    background-color: darkgray;
+}
+#trademarks {
+    background-color:lightgray;
+}
